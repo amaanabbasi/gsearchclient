@@ -1,6 +1,7 @@
 top_news_url = "https://news.google.com/news/rss"
 topic_url = "https://news.google.com/news/rss/headlines/section/topic/{}"
-
+query_url = "https://news.google.com/rss/search?q={}"
+favblog_url = ["http://pythontips.com/feed","https://pengoox.pythonanywhere.com/feed"]
 langMap = {
     'english': 'en',
     'indonesian': 'id',
