@@ -16,8 +16,8 @@ $ pip install gnewsclient
 
 - Create a NewsClient object:
     ```python
-    >>> from gnewsclient import gnewsclient
-    >>> client = gnewsclient.NewsClient(language='hindi', location='india', topic='Business', max_results=3)
+    >>> from gsearchclient import gsearchclient
+    >>> client = gsearchclient.SearchClient(language='hindi', location='india', topic='Business', max_results=3)
     ```
 
 - Get current parameter settings
