@@ -39,6 +39,7 @@ class SearchClient:
             'location': self.location,
             'language': self.language,
             'topic': self.topic,
+            'query': self.query_keyword,
         }
         return config
 
