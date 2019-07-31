@@ -12,7 +12,7 @@ from .utils import locationMap, langMap, topicMap, timeMap, top_news_url, topic_
 class SearchClient:
 
     def __init__(self, query_keyword, location='India', language='english', topic='Top Stories',
-                 upload_time=None, use_opengraph=False, max_results=10):
+                 upload_time="This Month", use_opengraph=False, max_results=7):
         """
         client initialization
         """
@@ -31,7 +31,7 @@ class SearchClient:
         # other settings
         self.use_opengraph = use_opengraph
         self.max_results = max_results
-        self.upload_time = upload_time
+        self.yt_upload_time = upload_time
 
     def get_config(self):
         """
@@ -42,6 +42,7 @@ class SearchClient:
             'language': self.language,
             'topic': self.topic,
             'query': self.query_keyword,
+            'youtube upload time': self.yt_upload_time,
         }
         return config
 
@@ -88,8 +89,8 @@ class SearchClient:
         """
         textToSearch = self.query_keyword
         query = urllib.parse.quote(textToSearch)
-        if not self.upload_time == None:
-            upload_time_code = timeMap[self.upload_time]
+        if not self.yt_upload_time == None:
+            upload_time_code = timeMap[self.yt_upload_time]
             url = "https://www.youtube.com/results?search_query=" + query + upload_time_code
         else:
             url = "https://www.youtube.com/results?search_query=" + query
