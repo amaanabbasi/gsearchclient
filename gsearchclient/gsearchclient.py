@@ -6,13 +6,13 @@ import urllib.request
 import urllib.parse
 
 from .PyOpenGraph import PyOpenGraph
-from .utils import locationMap, langMap, topicMap, top_news_url, topic_url, query_url, favblog_url
+from .utils import locationMap, langMap, topicMap, timeMap, top_news_url, topic_url, query_url, favblog_url
 
 
 class SearchClient:
 
     def __init__(self, query_keyword, location='India', language='english', topic='Top Stories',
-                 use_opengraph=False, max_results=10):
+                 upload_time=None, use_opengraph=False, max_results=10):
         """
         client initialization
         """
@@ -20,6 +20,7 @@ class SearchClient:
         self.locations = list(locationMap)
         self.languages = list(langMap)
         self.topics = list(topicMap)
+        self.upload_times = list(timeMap)
 
         # setting initial configuration
         self.location = location
@@ -30,6 +31,7 @@ class SearchClient:
         # other settings
         self.use_opengraph = use_opengraph
         self.max_results = max_results
+        self.upload_time = upload_time
 
     def get_config(self):
         """
@@ -86,7 +88,11 @@ class SearchClient:
         """
         textToSearch = self.query_keyword
         query = urllib.parse.quote(textToSearch)
-        url = "https://www.youtube.com/results?search_query=" + query
+        if not self.upload_time == None:
+            upload_time_code = timeMap[self.upload_time]
+            url = "https://www.youtube.com/results?search_query=" + query + upload_time_code
+        else:
+            url = "https://www.youtube.com/results?search_query=" + query
         response = urllib.request.urlopen(url)
         html = response.read()
         soup = BeautifulSoup(html, 'html.parser')

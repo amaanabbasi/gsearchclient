@@ -127,3 +127,11 @@ topicMap = {
     'Science': 'SCIENCE',
     'Health': 'HEALTH'
 }
+
+timeMap = {
+    'Last hour': '&sp=EgIIAQ%253D%253D',
+    'Today': '&sp=EgIIAg%253D%253D',
+    'This week': '&sp=EgIIAw%253D%253D',
+    'This month': '&sp=EgIIBA%253D%253D',
+    'This year': '&sp=EgIIBQ%253D%253D',
+}
